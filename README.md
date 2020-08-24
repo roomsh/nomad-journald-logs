@@ -1,0 +1,2 @@
+# nomad-journald-logs
+A simple tool to stream logs from journald into log files for nomad. This allows display of the logs in the nomad ui, without the overhead of running nomad's docker collecting daemon.
