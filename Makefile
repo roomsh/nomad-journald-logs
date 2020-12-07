@@ -1,5 +1,5 @@
 GIT_COMMIT=$(shell git log -1 --pretty=format:"%H")
-GIT_DESC=$(shell git describe --tags)
+GIT_DESC=$(shell git describe --tags --always)
 
 build:
 	test -z "`git status --porcelain`" || (echo "git repo is not clean"; exit 1)
