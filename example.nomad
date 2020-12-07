@@ -3,6 +3,11 @@ job "logs" {
   type        = "system"
 
   group "logs" {
+    restart {
+      mode     = "delay"
+      interval = "1m"
+    }
+
     task "logs" {
       driver = "docker"
 
@@ -14,6 +19,11 @@ job "logs" {
             type   = "bind",
             source = "/var/log/journal"
             target = "/var/log/journal"
+          },
+          {
+            type   = "bind",
+            source = "/etc/machine-id"
+            target = "/etc/machine-id"
           },
           {
             type   = "bind",
@@ -35,8 +45,6 @@ job "logs" {
         cpu    = 100
         memory = 128
       }
-
     }
   }
 }
-
