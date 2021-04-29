@@ -98,6 +98,11 @@ while p.poll():
 
         if container_name not in handlers:
             log_dir = alloc_base / alloc_id / "alloc" / "logs"
+
+            # Skip entries where we don't have a log_dir.
+            if not log_dir.exists():
+                continue
+
             log_name = f"{task_name}.stdout"
 
             # Match nomad's defaults of 10MB / 10 files
